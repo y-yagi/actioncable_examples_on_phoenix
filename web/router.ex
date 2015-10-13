@@ -16,7 +16,8 @@ defmodule ActioncableExamples.Router do
   scope "/", ActioncableExamples do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", ExamplesController, :index
+    resources "/sessions", SessionsController
   end
 
   # Other scopes may use custom stacks.

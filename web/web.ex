@@ -19,7 +19,7 @@ defmodule ActioncableExamples.Web do
   def model do
     quote do
       use Ecto.Model
-      
+
     end
   end
 
@@ -28,6 +28,7 @@ defmodule ActioncableExamples.Web do
       use Phoenix.Controller
 
       alias ActioncableExamples.Repo
+      alias ActioncableExamples.Authentication
       import Ecto.Model
       import Ecto.Query, only: [from: 1, from: 2]
 

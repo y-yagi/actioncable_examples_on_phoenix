@@ -1,0 +1,11 @@
+<h1>Action Cable Examples</h1>
+
+<p>
+  Hello <%= @current_user.name %>
+</p>
+
+<p>
+  <ul>
+    <li><%#= link 'Messages with live comments', to: messages_path %></li>
+  </ul>
+</p>
