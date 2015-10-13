@@ -1,10 +1,15 @@
 defmodule ActioncableExamples.Authentication do
   alias ActioncableExamples.Repo
-  import Ecto.Model
-  import Ecto.Query, only: [from: 1, from: 2]
+  use ActioncableExamples.Web, :controller
+  use ActioncableExamples.Web, :router
 
-  def ensure_authenticated_user do
-    ActioncableExamples.Repo.get!(ActioncableExamples.User, 11)
+  def ensure_authenticated_user(conn) do
+    user_id = Plug.Conn.get_session(conn, :user_id)
+    if user_id do
+      Repo.get(ActioncableExamples.User, user_id)
+    else
+      conn |> redirect(to: sessions_path(conn, :new)) |> halt
+    end
   #    authenticate_user(cookies.signed[:user_id]) || redirect_to(new_session_url)
   end
 

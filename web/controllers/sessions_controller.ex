@@ -1,5 +1,6 @@
 defmodule ActioncableExamples.SessionsController do
   use ActioncableExamples.Web, :controller
+  alias ActioncableExamples.User
 
   def new(conn, _params) do
     users = Repo.all(User)
