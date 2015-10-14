@@ -1,0 +1,10 @@
+<h1>Authenticate as one of the following users</h1>
+
+<p>
+  <ul>
+    <%= for user <- @users do %>
+      <li><%= link user.name, to: sessions_path(@conn, :create, user_id: user.id), method: :post %></li>
+    <% end %>
+  </ul>
+</p>
+

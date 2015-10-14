@@ -4,10 +4,11 @@ defmodule ActioncableExamples.SessionsController do
 
   def new(conn, _params) do
     users = Repo.all(User)
-    render(conn, "index.html", users: users)
+    render(conn, "new.html", users: users)
   end
 
   def create(conn, _params) do
+    conn = Authentication.authenticate_user(conn, _params["user_id"])
     redirect(conn, to: examples_path(conn, :index))
   end
 
