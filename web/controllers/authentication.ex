@@ -21,9 +21,8 @@ defmodule ActioncableExamples.Authentication do
     conn
   end
 
-  def unauthenticate_user do
+  def unauthenticate_user(conn) do
     # ActionCable.server.disconnect(current_user: @current_user)
-    # @current_user = nil
-    # cookies.delete(:user_id)
+    delete_session(conn, :user_id)
   end
 end

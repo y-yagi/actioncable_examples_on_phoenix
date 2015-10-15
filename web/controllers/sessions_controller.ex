@@ -13,6 +13,7 @@ defmodule ActioncableExamples.SessionsController do
   end
 
   def delete(conn, _params) do
+    conn = Authentication.unauthenticate_user(conn)
     redirect(conn, to: sessions_path(conn, :new))
   end
 end
