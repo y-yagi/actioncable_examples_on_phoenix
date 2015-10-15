@@ -20,6 +20,7 @@ defmodule ActioncableExamples.Router do
     get  "/sessions/new", SessionsController, :new
     post "/sessions", SessionsController, :create
     delete "/sessions", SessionsController, :delete
+    resources "/messages", MessageController
   end
 
   # Other scopes may use custom stacks.

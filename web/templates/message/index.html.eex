@@ -1,0 +1,10 @@
+<h1>Messages</h1>
+
+<p>
+  <ul>
+    <%= for message <- @messages do %>
+      <li><%= link message.title, to: message_path(@conn, :show, message) %></li>
+    <% end %>
+  </ul>
+</p>
+

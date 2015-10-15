@@ -7,6 +7,6 @@
 
 <p>
   <ul>
-    <li><%#= link 'Messages with live comments', to: messages_path %></li>
+    <li><%= link 'Messages with live comments', to: message_path(@conn, :index) %></li>
   </ul>
 </p>
