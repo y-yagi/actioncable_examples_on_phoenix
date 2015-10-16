@@ -2,5 +2,4 @@
 
 <p><%= @message.content %></p>
 
-<%#= render 'comments/comments', message: @message %>
-
+<%= render ActioncableExamples.CommentView, "comments.html", message: @message, comment_changeset: @comment_changeset %>
