@@ -1,5 +1,6 @@
-<%#= form_for [ @message, Comment.new ], :new, fn f -> %>
-<%= form_for @comment_changeset, :create, fn f -> %>
-  <%= textarea f, :content, size: "100x20" %><br>
-  <%= submit "Post comment" %>
-<% end %>
+<textarea id="chat-input" size="100x20"></textarea>
+<br>
+<input type="submit" value="Post comment" id="post-comment">
+<br>
+<div id="messages"></div>
+
