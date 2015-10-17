@@ -9,7 +9,7 @@ defmodule ActioncableExamples.MessageController do
   end
 
   def show(conn, %{"id" => id}) do
-    message = Repo.get!(Message, id)
+    message = Message |> Repo.get(id) |> Repo.preload [:comments]
     render(conn, "show.html", message: message)
   end
 end

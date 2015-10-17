@@ -2,5 +2,4 @@
 <br>
 <input type="submit" value="Post comment" id="post-comment">
 <br>
-<div id="messages"></div>
 

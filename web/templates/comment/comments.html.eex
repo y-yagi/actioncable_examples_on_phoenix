@@ -1,5 +1,6 @@
-<section id="comments" data-channel="comments" data-message-id="<%= @message.id %>">
-  <%#= render message.comments %>
-</section>
-
 <%= render "new.html", message: @message %>
+
+<%= for comment <- @message.comments do %>
+  <p><%= comment.content %>
+<% end %>
+<div id="messages"></div>

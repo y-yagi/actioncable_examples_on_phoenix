@@ -5,6 +5,7 @@ defmodule ActioncableExamples.Message do
     field :title, :string
     field :content, :string
     belongs_to :user, ActioncableExamples.User
+    has_many :comments, ActioncableExamples.Comment
 
     timestamps
   end
