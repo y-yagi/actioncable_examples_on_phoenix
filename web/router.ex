@@ -21,6 +21,7 @@ defmodule ActioncableExamples.Router do
     post "/sessions", SessionsController, :create
     delete "/sessions", SessionsController, :delete
     resources "/messages", MessageController
+    resources "/comments", CommentController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.
