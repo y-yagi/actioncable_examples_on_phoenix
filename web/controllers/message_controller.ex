@@ -10,7 +10,6 @@ defmodule ActioncableExamples.MessageController do
 
   def show(conn, %{"id" => id}) do
     message = Repo.get!(Message, id)
-    comment_changeset = Comment.changeset(%Comment{})
-    render(conn, "show.html", message: message, comment_changeset: comment_changeset)
+    render(conn, "show.html", message: message)
   end
 end

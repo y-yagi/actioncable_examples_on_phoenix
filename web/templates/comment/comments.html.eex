@@ -2,4 +2,4 @@
   <%#= render message.comments %>
 </section>
 
-<%= render "new.html", message: @message, comment_changeset: @comment_changeset %>
+<%= render "new.html", message: @message %>
