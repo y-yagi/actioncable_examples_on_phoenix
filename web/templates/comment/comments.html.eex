@@ -1,5 +1,7 @@
 <%= render "new.html", message: @message %>
 
+<input type="hidden" id="message_id" value="<%= @message.id %>">
+
 <%= for comment <- @message.comments do %>
   <p><%= comment.content %>
 <% end %>

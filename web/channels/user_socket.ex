@@ -20,6 +20,7 @@ defmodule ActioncableExamples.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   def connect(_params, socket) do
+    socket = assign(socket, :message_id, _params["message_id"])
     {:ok, socket}
   end
 

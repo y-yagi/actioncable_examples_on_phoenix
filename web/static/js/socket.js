@@ -49,7 +49,8 @@ import {Socket} from "deps/phoenix/web/static/js/phoenix"
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-let socket = new Socket("/socket", {params: { token: window.userToken}})
+let messageId = $("#message_id").val();
+let socket = new Socket("/socket", {params: { token: window.userToken, message_id: messageId}})
 socket.connect()
 
 let channel           = socket.channel("rooms:lobby", {})

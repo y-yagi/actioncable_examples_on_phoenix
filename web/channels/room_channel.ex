@@ -9,9 +9,9 @@ defmodule ActioncableExamples.RoomChannel do
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
-    message = ActioncableExamples.Repo.get(ActioncableExamples.Message, 3)
-    user = ActioncableExamples.Repo.get(ActioncableExamples.User, message.user_id)
-    ActioncableExamples.Repo.insert(%ActioncableExamples.Comment{content: body, message_id: message.id, user_id: user.id})
+    message = ActioncableExamples.Repo.get(ActioncableExamples.Message, socket.assigns[:message_id])
+
+    ActioncableExamples.Repo.insert!(%ActioncableExamples.Comment{content: body, message_id: message.id, user_id: message.user_id})
 
     broadcast! socket, "new_msg", %{body: body}
     {:noreply, socket}
