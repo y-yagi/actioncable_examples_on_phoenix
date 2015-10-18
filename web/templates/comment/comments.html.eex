@@ -1,6 +1,7 @@
 <%= render "new.html", message: @message %>
 
 <input type="hidden" id="message_id" value="<%= Phoenix.Token.sign(@conn, "message", @message.id)  %>">
+<input type="hidden" id="user_token" value="<%= Phoenix.Token.sign(@conn, "user", @current_user.id)  %>">
 
 <%= for comment <- @message.comments do %>
   <p><%= comment.content %>

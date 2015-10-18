@@ -50,7 +50,8 @@ import {Socket} from "deps/phoenix/web/static/js/phoenix"
 // from connect if you don't care about authentication.
 
 let messageId = $("#message_id").val();
-let socket = new Socket("/socket", {params: { token: window.userToken, message_id: messageId}})
+let userToken = $("#user_token").val();
+let socket = new Socket("/socket", { params: { token: window.userToken, message_id: messageId, user_token: userToken } })
 socket.connect()
 
 let channel           = socket.channel("rooms:lobby", {})

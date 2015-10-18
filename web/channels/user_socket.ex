@@ -21,6 +21,7 @@ defmodule ActioncableExamples.UserSocket do
   # performing token verification on connect.
   def connect(_params, socket) do
     socket = assign(socket, :message_id, _params["message_id"])
+    socket = assign(socket, :user_token, _params["user_token"])
     {:ok, socket}
   end
 

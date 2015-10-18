@@ -2,4 +2,4 @@
 
 <p><%= @message.content %></p>
 
-<%= render ActioncableExamples.CommentView, "comments.html", message: @message, conn: @conn %>
+<%= render ActioncableExamples.CommentView, "comments.html", message: @message, conn: @conn, current_user: @current_user %>
