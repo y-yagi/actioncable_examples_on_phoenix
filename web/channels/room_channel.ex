@@ -9,12 +9,15 @@ defmodule ActioncableExamples.RoomChannel do
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
-    message = ActioncableExamples.Repo.get(ActioncableExamples.Message, socket.assigns[:message_id])
-
-    ActioncableExamples.Repo.insert!(%ActioncableExamples.Comment{content: body, message_id: message.id, user_id: message.user_id})
-
-    broadcast! socket, "new_msg", %{body: body}
-    {:noreply, socket}
+    case Phoenix.Token.verify(socket, "message", socket.assigns[:message_id]) do
+      {:ok, message_id} ->
+        message = ActioncableExamples.Repo.get(ActioncableExamples.Message, message_id)
+        ActioncableExamples.Repo.insert!(%ActioncableExamples.Comment{content: body, message_id: message.id, user_id: message.user_id})
+        broadcast! socket, "new_msg", %{body: body}
+        {:noreply, socket}
+      {:error, _} ->
+        :error
+    end
   end
 
   def handle_out("new_msg", payload, socket) do
