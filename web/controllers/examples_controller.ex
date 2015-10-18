@@ -1,8 +1,12 @@
 defmodule ActioncableExamples.ExamplesController do
   use ActioncableExamples.Web, :controller
+  plug :authenticate
 
   def index(conn, _params) do
-    current_user = Authentication.ensure_authenticated_user(conn)
-    render(conn, "index.html", current_user: current_user)
+    render(conn, "index.html")
+  end
+
+  defp authenticate(conn, _) do
+    Authentication.ensure_authenticated_user(conn)
   end
 end

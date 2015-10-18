@@ -8,7 +8,8 @@ defmodule ActioncableExamples.Authentication do
     Logger.info("user_id: #{user_id}")
 
     if user_id do
-      Repo.get(ActioncableExamples.User, user_id)
+      user = Repo.get!(ActioncableExamples.User, user_id)
+      assign(conn, :current_user, user)
     else
       conn |> redirect(to: sessions_path(conn, :new)) |> halt
     end
